@@ -136,7 +136,7 @@ jobs:
           push: true
           tags: xaisn/taski_frontend:latest
 
-    deploy:
+  deploy:
     runs-on: ubuntu-latest
     needs: 
       # Дождёмся билда всех образов Taski
@@ -179,7 +179,7 @@ jobs:
             sudo docker compose -f docker-compose.production.yml exec backend python manage.py collectstatic
             sudo docker compose -f docker-compose.production.yml exec backend cp -r /app/collected_static/. /backend_static/static/
 
-    send_message:
+  send_message:
     runs-on: ubuntu-latest
     needs: deploy
     steps:
